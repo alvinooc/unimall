@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <!-- 轮播图 -->
     <Swiper :banners="navData[0]"/>
 
@@ -8,6 +8,12 @@
 
     <!-- 广告 -->
     <home-advert :advert="navData[2]"/>
+
+    <!-- 分类精选 -->
+    <home-recommend/>
+
+    <!-- 产品 -->
+    <home-products :products="products"/>
   </div>
 </template>
 
@@ -16,8 +22,10 @@
 
   import HomeCategory from './childCpns/HomeCategory'
   import HomeAdvert from './childCpns/HomeAdvert'
+  import HomeRecommend from './childCpns/HomeRecommend'
+  import HomeProducts from './childCpns/HomeProducts'
 
-  import { getHomeNavData } from "@/service/home";
+  import { getNavData, getProducts } from "@/service/home";
 
 
   export default {
@@ -25,30 +33,41 @@
     components: {
       Swiper,
       HomeCategory,
-      HomeAdvert
+      HomeAdvert,
+      HomeRecommend,
+      HomeProducts
     },
     data() {
       return {
-        navData: []
+        navData: [],
+        products: []
       }
     },
     onLoad() {
       // 获取轮播图、广告相关数据
-      this._getHomeNavData()
+      this._getNavData()
+
+      // 获取产品数据
+      this._getProducts()
     },
     methods: {
-      _getHomeNavData() {
-        getHomeNavData({
+      _getNavData() {
+        getNavData({
             nav_type: [0, 1, 2]
           }, "post")
           .then(res => {
             this.navData = res.data.data
-            console.log(this.navData)
         });
+      },
+      _getProducts() {
+        getProducts().then(res => {
+          this.products = res.data.data.home_recommend_products
+          console.log(this.products);
+        })
       }
     }
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

@@ -3,6 +3,7 @@
 		{
 			"path": "pages/home/Home",
 			"style": {
+				"backgroundColor": "#000",
 				"app-plus": {
 					"titleNView": {
 						"searchInput": {
