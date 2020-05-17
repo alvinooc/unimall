@@ -1,5 +1,7 @@
 <template>
-  <div id="recommend">
+  <navigator id="recommend"
+             url="/pages/category/Category" 
+             open-type="switchTab">
     <view class="image-icon">
       <image src="@/static/img/home/circle.png" class="circle"/>
       <image src="@/static/img/home/diamond.png" class="diamond"/>
@@ -8,13 +10,18 @@
       <view class="content-top">分类精选</view>
       <view class="content-bottom">Competitive Products For You</view>
     </view>
-    <image src="@/static/img/home/r_arrow.png" class="arrow"/>
-  </div>
+    <uni-icons type="arrowright" size="18" color="#999"/>
+  </navigator>
 </template>
 
 <script>
+  import uniIcons from "@/components/uni/uni-icons/uni-icons.vue"
+
   export default {
-    name: 'HomeRecommend'
+    name: 'HomeRecommend',
+    components: {
+      uniIcons
+    }
   }
 </script>
 
@@ -43,17 +50,12 @@
     }
     .content {
       flex: 1;
-      font-size: 26upx;
+      font-size: 32upx;
       font-weight: 700;
       .content-bottom {
         color: #999;
         font-size: 16upx;
       }
-    }
-    .arrow {
-      width: 10%;
-      width: 24upx;
-      height: 40upx;
     }
   }
 </style>

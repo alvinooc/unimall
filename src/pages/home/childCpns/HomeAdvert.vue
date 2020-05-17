@@ -1,7 +1,9 @@
 <template>
     <div class="advert">
       <block v-for="(item, index) in advert" :key="index">
-        <image :src="item.image" mode="widthFix"/>
+        <navigator :url="'/pages/detail/Detail?id=' + item.id ">
+          <image :src="item.image" mode="widthFix"/>
+        </navigator>
       </block>
     </div>
 </template>

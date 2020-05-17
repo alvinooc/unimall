@@ -9,12 +9,21 @@
         <scroll-view scroll-x>
           <view class="product">
             <block v-for="(pro, indey) in item.products" :key="indey">
-              <view  class="product-item">
-                <image :src="pro.image[0]" mode="widthFix" />
-                <view class="product-info">{{pro.title}}</view>
-                <view class="product-price"> ¥ {{pro.price}}</view>
-              </view>
+              <navigator :url="'/pages/detail/Detail?id=' + pro.id " class="product-item">
+                <view>
+                  <image :src="pro.image[0]" mode="widthFix" />
+                  <view class="product-info">{{pro.title}}</view>
+                  <view class="product-price"> ¥ {{pro.price}}</view>
+                </view>
+              </navigator>
             </block>
+            <navigator class="product-item"
+                       :url="'/pages/product/Product?id=' + item.target">
+              <view class="allPro">
+                <text>查看全部</text>
+                <text>More+</text>
+              </view>
+            </navigator>
           </view>
         </scroll-view>
       </view>
@@ -43,9 +52,10 @@ export default {
     .title {
       display: flex;
       align-items: center;
-      margin: 30upx;
-      font-size: 38upx;
-      letter-spacing: 12upx;
+      padding: 16upx;
+      font-size: 34upx;
+      letter-spacing: 8upx;
+      border-bottom: 6upx solid #f1f1f1;
       image {
         width: 8upx;
         height: 30upx;
@@ -54,13 +64,14 @@ export default {
     }
     .product {
       display: flex;
+      padding-left: 30upx;
+      margin-top: 20upx;
       .product-item {
-        width: 35%;
-        margin-left: 30upx;
+        width: 242upx;
         padding-right: 30upx;
         image {
           width: 100%;
-          height: 242upx!important;
+          height: 204upx!important;
           margin-bottom: 20upx;
         }
         .product-info {
@@ -77,6 +88,15 @@ export default {
           color: #fa265f;
           font-size: 20upx;
         }
+      }
+      .allPro {
+        width: 204upx;
+        height: 134upx;
+        padding-top: 70upx;
+        text-align: center;
+        font-size: 32upx;
+        color: #898c92;
+        background-color: #f1f1f1;
       }
     }
   }
