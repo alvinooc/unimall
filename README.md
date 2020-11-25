@@ -1,4 +1,4 @@
-# unimall
+# unimall demo
 
 ## Project setup
 ```
